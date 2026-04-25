@@ -1,0 +1,31 @@
+---
+title: "py-study"
+date: 2026-03-15
+type: software
+status: wip
+stack: [python, sphinx, pytest]
+summary: "A library for learning Python by running instrumented example code."
+repo: "https://github.com/kingnaderi/py-study"
+duration: "ongoing"
+role: "author · maintainer"
+---
+
+## What it is
+
+`py-study` is a small library that turns Python's own abstractions into something you can poke at from the inside. You import it, point it at a snippet of code, and it writes back — showing each evaluation step, each name binding, each frame on the stack, each object's identity.
+
+The premise is simple: if you want to understand how a language actually works, the best place to start is watching it run on your own examples, with your own names, on your own machine.
+
+## Who it's for
+
+People who have written some Python and want to go further. Students who have been told that `a = [1, 2]; b = a` does something strange, and want to see why. Developers trying to internalize generators, or decorators, or the GIL, without buying a 900-page book.
+
+## Design notes
+
+The instrumentation uses `sys.settrace` and a thin frame inspector. No debugger, no decorator magic. You can read the whole core in a lunch break — which is a feature, not an accident. A teaching library should itself be teachable.
+
+## What's next
+
+- More narrated example notebooks.
+- A mode that emits Mermaid diagrams of your program's control flow.
+- Write-ups for each chapter of *Fluent Python* with runnable, annotated versions of the examples.
