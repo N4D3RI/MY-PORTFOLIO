@@ -45,7 +45,5 @@ Currently empty by design. Three sections render `PAYLOAD PENDING`. Content infr
 
 - `?` toggles the shortcut overlay
 - `G P` jumps to PROJECTS
-- `G W` jumps to WRITING
-- `G X` jumps to EXPERIENCES
 - `G C` jumps to CHANNEL
 - `ESC` closes overlays

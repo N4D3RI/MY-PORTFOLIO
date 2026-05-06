@@ -1,8 +1,6 @@
 import { Hero } from "@/components/Hero";
 import { Section } from "@/components/Section";
-import { EmptyState } from "@/components/EmptyState";
 import { ProjectCard } from "@/components/ProjectCard";
-import { ExperienceCard } from "@/components/ExperienceCard";
 
 export default function Home() {
   return (
@@ -41,87 +39,28 @@ export default function Home() {
         label="PROJECTS"
         sublabel="/ MANIFEST"
       >
-        <div className="flex flex-col gap-12">
-          <ProjectCard
-            lead
-            codename="LEXPY"
-            status="DEPLOYED"
-            summary="Interactive Python glossary with 150 functions. Search any method, read what it does, see it used, run real Python in the browser via Pyodide."
-            stack={[
-              "React",
-              "TypeScript",
-              "Vite",
-              "Pyodide",
-              "Tailwind",
-              "Fuse.js",
-            ]}
-            primaryLink={{
-              href: "https://n4d3ri.github.io/lexpy-dictionary/",
-              label: "VIEW TRANSMISSION",
-            }}
-            secondaryLink={{
-              href: "https://github.com/N4D3RI/lexpy-dictionary",
-              label: "SOURCE",
-            }}
-          />
-          <ProjectCard codename="HYR" status="IN_DEVELOPMENT" />
-          <ProjectCard codename="STARK SYSTEMS" status="IN_DEVELOPMENT" />
-        </div>
-      </Section>
-
-      <Section
-        id="writing"
-        number="02"
-        label="WRITING"
-        sublabel="/ TRANSMISSIONS"
-      >
-        <EmptyState />
-      </Section>
-
-      <Section
-        id="experiences"
-        number="03"
-        label="EXPERIENCES"
-        sublabel="/ WAYPOINTS"
-      >
-        <div className="flex flex-col gap-14 md:gap-16">
-          <ExperienceCard
-            role="FOUNDER"
-            organization="HYR"
-            location="SOUTH FLORIDA"
-            description="B2B recruiting platform replacing resumes with skill assessments."
-          />
-          <ExperienceCard
-            role="FOUNDER"
-            organization="STARK SYSTEMS"
-            location="SOUTH FLORIDA"
-            description="AI lead generation and automation for contractors and home service businesses."
-          />
-          <ExperienceCard
-            role="ML / AI BOOTCAMP"
-            organization="TRIPLETEN"
-            location="REMOTE"
-            description="Python, pandas, statistics, hypothesis testing, and machine learning fundamentals."
-          />
-          <ExperienceCard
-            role="CONSTRUCTION OPERATIONS"
-            organization="LUXURY RESIDENTIAL DEVELOPMENT"
-            location="SOUTH FLORIDA"
-            description="Hands on exposure to GC operations, scheduling, and subcontractor management on luxury residential builds."
-          />
-          <ExperienceCard
-            role="NATIONAL COMPETITOR"
-            organization="FBLA NATIONALS"
-            location="USA"
-            description="Qualified for Future Business Leaders of America national competition."
-          />
-          <ExperienceCard
-            role="COMBAT ATHLETE"
-            organization="MUAY THAI"
-            location="THAILAND"
-            description="Trained at a Thai gym. Conditioning is a daily decision, not a season."
-          />
-        </div>
+        <ProjectCard
+          lead
+          codename="LEXPY"
+          status="DEPLOYED"
+          summary="Interactive Python glossary with 150 functions. Search any method, read what it does, see it used, run real Python in the browser via Pyodide."
+          stack={[
+            "React",
+            "TypeScript",
+            "Vite",
+            "Pyodide",
+            "Tailwind",
+            "Fuse.js",
+          ]}
+          primaryLink={{
+            href: "https://n4d3ri.github.io/lexpy-dictionary/",
+            label: "VIEW TRANSMISSION",
+          }}
+          secondaryLink={{
+            href: "https://github.com/N4D3RI/lexpy-dictionary",
+            label: "SOURCE",
+          }}
+        />
       </Section>
     </>
   );

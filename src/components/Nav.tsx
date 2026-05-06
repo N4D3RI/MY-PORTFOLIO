@@ -8,8 +8,6 @@ type Item = { primary: string; sub: string; href: string };
 
 const ITEMS: Item[] = [
   { primary: "PROJECTS", sub: "/ manifest", href: "#projects" },
-  { primary: "WRITING", sub: "/ transmissions", href: "#writing" },
-  { primary: "EXPERIENCES", sub: "/ waypoints", href: "#experiences" },
   { primary: "CONTACT", sub: "/ channel", href: "#channel" },
 ];
 

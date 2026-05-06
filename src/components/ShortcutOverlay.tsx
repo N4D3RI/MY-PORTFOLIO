@@ -4,16 +4,12 @@ import { useEffect, useState } from "react";
 
 const TARGETS: Record<string, string> = {
   p: "#projects",
-  w: "#writing",
-  x: "#experiences",
   c: "#channel",
 };
 
 const ROWS: Array<[string, string]> = [
   ["?", "TOGGLE OVERLAY"],
   ["G P", "JUMP · MANIFEST"],
-  ["G W", "JUMP · TRANSMISSIONS"],
-  ["G X", "JUMP · WAYPOINTS"],
   ["G C", "JUMP · CHANNEL"],
   ["ESC", "CLOSE"],
 ];
