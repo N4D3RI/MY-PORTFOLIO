@@ -10,6 +10,11 @@ export function Hero() {
         {/* Identifier */}
         <p className="mt-8 mono-label text-fg-1">SOUTH FLORIDA</p>
 
+        {/* Tagline — smaller, muted, lowercase sentence */}
+        <p className="mt-3 font-mono text-fg-2 text-xs md:text-sm leading-relaxed max-w-2xl">
+          Aspiring ML engineer focused on AI integration in machinery and hardware.
+        </p>
+
         {/* CTAs */}
         <div className="mt-12 flex flex-wrap gap-3">
           <a
