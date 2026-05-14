@@ -1,36 +1,46 @@
 export function Hero() {
   return (
-    <section className="relative px-6 md:px-10 pt-12 md:pt-20 pb-24 md:pb-32">
-      <div className="mx-auto w-full max-w-6xl">
-        {/* Wordmark */}
-        <h1 className="font-display font-semibold text-fg-0 leading-[0.85] tracking-[-0.04em] text-[clamp(5rem,18vw,16rem)]">
-          NADERI
+    <section className="relative px-6 md:px-10 pt-16 md:pt-28 pb-28 md:pb-40">
+      <div className="mx-auto w-full max-w-3xl text-center">
+        {/* Frontispiece label */}
+        <p className="mono-label text-fg-2 mb-8">A Personal Volume</p>
+
+        {/* Wordmark — title-cased serif, classical proportions */}
+        <h1 className="font-display text-fg-0 leading-[0.95] tracking-[-0.01em] text-[clamp(4.5rem,14vw,11rem)] font-medium">
+          Naderi
         </h1>
 
-        {/* Identifier */}
-        <p className="mt-8 mono-label text-fg-1">SOUTH FLORIDA</p>
+        {/* Locale ornament */}
+        <div
+          aria-hidden
+          className="mt-8 flex items-center justify-center gap-4 text-fg-2"
+        >
+          <span className="block h-px w-12 bg-fg-2/40" />
+          <span className="mono-label">South Florida</span>
+          <span className="block h-px w-12 bg-fg-2/40" />
+        </div>
 
-        {/* Tagline — smaller, muted, lowercase sentence */}
-        <p className="mt-3 font-mono text-fg-2 text-xs md:text-sm leading-relaxed max-w-2xl">
-          Aspiring ML engineer focused on AI integration in machinery and hardware.
+        {/* Italic flourish — the only piece that breaks the upright voice */}
+        <p className="mt-10 flourish text-fg-1 text-xl md:text-2xl leading-relaxed max-w-2xl mx-auto">
+          An aspiring machine-learning engineer drawn to the quiet places
+          where intelligence meets metal.
         </p>
 
-        {/* CTAs */}
-        <div className="mt-12 flex flex-wrap gap-3">
+        {/* Quiet calls to action */}
+        <div className="mt-14 flex flex-wrap justify-center gap-4">
           <a
             href="#projects"
-            className="snap-hover inline-flex items-center gap-2 px-4 py-3 mono-label text-fg-0 hover:text-signal transition-none"
-            style={{ background: "var(--color-bg-1)" }}
+            className="snap-hover inline-flex items-center gap-3 px-5 py-3 font-display italic text-base text-fg-0 hover:text-signal"
+            style={{ background: "var(--color-bg-2)" }}
           >
-            <span aria-hidden>→</span>
-            PROJECTS
+            Read the works
           </a>
           <a
             id="channel"
             href="mailto:naderimohammad273@gmail.com"
-            className="snap-hover inline-flex items-center gap-2 px-4 py-3 mono-label text-fg-1 hover:text-signal transition-none"
+            className="snap-hover inline-flex items-center gap-3 px-5 py-3 font-display italic text-base text-fg-1 hover:text-signal"
           >
-            CONTACT
+            Write a letter
           </a>
         </div>
       </div>

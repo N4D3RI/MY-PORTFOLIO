@@ -4,9 +4,9 @@ import { ReactNode, useEffect, useRef, useState } from "react";
 
 type Props = {
   id: string;
-  number: string; // "01", "02", "03"
-  label: string;  // "PROJECTS"
-  sublabel: string; // "/ MANIFEST"
+  number: string;   // "i", "ii", "iii" — Roman numerals
+  label: string;    // "Works"
+  sublabel: string; // "a small index"
   children: ReactNode;
 };
 
@@ -38,41 +38,33 @@ export function Section({ id, number, label, sublabel, children }: Props) {
       ref={ref}
       id={id}
       data-section={number}
-      className="relative min-h-screen scroll-mt-24 px-6 md:px-10 py-24 md:py-32 hairline hairline-t reveal"
+      className="relative scroll-mt-24 px-6 md:px-10 py-24 md:py-32 hairline hairline-t reveal"
       data-revealed={revealed}
     >
-      {/* Alignment tick — top-left, 6px mono */}
-      <span
-        aria-hidden
-        className="absolute top-3 left-3 mono-label-sm text-fg-2"
-      >
-        +
-      </span>
+      <div className="mx-auto w-full max-w-3xl text-center">
+        {/* Roman numeral — quiet folio mark */}
+        <p className="mono-label text-fg-2 mb-3">
+          {number}
+        </p>
 
-      <div className="mx-auto w-full max-w-6xl grid grid-cols-12 gap-4">
-        {/* Drop-cap section number — structural left column */}
-        <div className="hidden md:flex col-span-2 items-start justify-end pr-4">
-          <span
-            aria-hidden
-            className="font-mono text-fg-2 text-[clamp(3rem,8vw,7rem)] leading-none select-none"
-          >
-            {number}
-          </span>
+        {/* Title — large serif, set in small caps via styling */}
+        <h2 className="font-display text-fg-0 text-[clamp(2.25rem,5vw,3.75rem)] leading-[1] tracking-[-0.01em] font-medium">
+          {label}
+        </h2>
+
+        {/* Italic subtitle */}
+        <p className="mt-3 flourish text-fg-2 text-lg">
+          {sublabel}
+        </p>
+
+        {/* Ornamental divider */}
+        <div className="my-12 flex items-center justify-center gap-3 text-fg-2">
+          <span className="block h-px w-16 bg-fg-2/35" />
+          <span aria-hidden className="font-display italic text-base">§</span>
+          <span className="block h-px w-16 bg-fg-2/35" />
         </div>
 
-        <div className="col-span-12 md:col-span-10">
-          {/* SEC.0N plate */}
-          <div className="flex items-baseline gap-4 mb-8">
-            <span className="mono-label text-fg-2">SEC.{number}</span>
-            <span className="mono-label text-fg-1">{sublabel}</span>
-          </div>
-
-          <h2 className="font-display text-fg-0 text-[clamp(2rem,4vw,3.25rem)] leading-[0.95] tracking-[-0.02em] font-semibold mb-10">
-            {label}
-          </h2>
-
-          {children}
-        </div>
+        {children}
       </div>
     </section>
   );
