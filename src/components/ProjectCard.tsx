@@ -11,8 +11,13 @@ type Props = {
   stack?: string[];
   primaryLink?: LinkSpec;
   secondaryLink?: LinkSpec;
-  /** Lead project — raised surface, larger codename, full hairline frame. */
+  /** Lead entry — slightly raised vellum, larger title. */
   lead?: boolean;
+};
+
+const STATUS_LABEL: Record<Status, string> = {
+  DEPLOYED: "in circulation",
+  IN_DEVELOPMENT: "in the workshop",
 };
 
 export function ProjectCard({
@@ -24,86 +29,67 @@ export function ProjectCard({
   secondaryLink,
   lead = false,
 }: Props) {
-  const deployed = status === "DEPLOYED";
+  const live = status === "DEPLOYED";
 
   return (
     <article
-      className={`relative px-6 md:px-10 py-10 md:py-12 ${
+      className={`relative px-6 md:px-12 py-12 md:py-16 text-center ${
         lead
           ? "hairline-strong hairline-t hairline-b"
           : "hairline hairline-t"
       }`}
       style={{ background: lead ? "var(--color-bg-2)" : "transparent" }}
     >
-      {/* Alignment tick — matches Section's instrument-panel feel */}
-      <span
-        aria-hidden
-        className="absolute top-3 left-3 mono-label-sm text-fg-2"
-      >
-        +
-      </span>
-
-      {/* Top row: codename + status */}
-      <div className="flex items-start justify-between gap-6 flex-wrap">
-        <div className="min-w-0">
-          <div className="mono-label-sm text-fg-2 mb-2">CODENAME</div>
-          <h3
-            className={`font-display font-semibold text-fg-0 tracking-[-0.02em] leading-[0.9] ${
-              lead
-                ? "text-[clamp(2.5rem,6vw,4.5rem)]"
-                : "text-[clamp(1.75rem,3.5vw,2.5rem)]"
-            }`}
-          >
-            {codename}
-          </h3>
-        </div>
-        <div className="text-right shrink-0">
-          <div className="mono-label-sm text-fg-2 mb-2">STATUS</div>
-          <div className="inline-flex items-center gap-2">
-            {deployed ? (
-              <LiveIndicator size={lead ? 10 : 8} />
-            ) : (
-              <span
-                aria-hidden
-                className="inline-block"
-                style={{
-                  width: lead ? 10 : 8,
-                  height: lead ? 10 : 8,
-                  background: "var(--color-signal-dim)",
-                }}
-              />
-            )}
-            <span
-              className={`mono-label ${
-                deployed ? "text-signal" : "text-fg-1"
-              }`}
-            >
-              {status}
-            </span>
-          </div>
-        </div>
+      {/* Status — small caps, centered above title */}
+      <div className="inline-flex items-center gap-2 mb-6">
+        {live ? (
+          <LiveIndicator size={lead ? 8 : 6} />
+        ) : (
+          <span
+            aria-hidden
+            className="inline-block"
+            style={{
+              width: lead ? 8 : 6,
+              height: lead ? 8 : 6,
+              background: "var(--color-signal-dim)",
+            }}
+          />
+        )}
+        <span className={`mono-label ${live ? "text-signal" : "text-fg-2"}`}>
+          {STATUS_LABEL[status]}
+        </span>
       </div>
 
+      {/* Title — serif, centered */}
+      <h3
+        className={`font-display text-fg-0 tracking-[-0.01em] leading-[0.95] font-medium ${
+          lead
+            ? "text-[clamp(2.75rem,6vw,4.75rem)]"
+            : "text-[clamp(1.875rem,3.5vw,2.75rem)]"
+        }`}
+      >
+        {codename}
+      </h3>
+
       {summary ? (
-        <p className="mt-10 text-fg-0 text-base md:text-lg leading-relaxed max-w-2xl">
+        <p className="mt-8 mx-auto text-fg-1 text-lg md:text-xl leading-[1.7] max-w-2xl">
           {summary}
         </p>
       ) : null}
 
       {stack && stack.length > 0 ? (
         <div className="mt-10">
-          <div className="mono-label-sm text-fg-2 mb-3">STACK</div>
-          <ul className="flex flex-wrap gap-2">
-            {stack.map((tag) => (
+          <p className="mono-label-sm text-fg-2 mb-4">composed with</p>
+          <ul className="flex flex-wrap justify-center gap-x-3 gap-y-2">
+            {stack.map((tag, i) => (
               <li
                 key={tag}
-                className="font-mono uppercase tracking-[0.08em] text-fg-1 text-xs px-2 py-1"
-                style={{
-                  border: "1px solid var(--color-line-strong)",
-                  background: "var(--color-bg-1)",
-                }}
+                className="font-display italic text-fg-1 text-base inline-flex items-center gap-3"
               >
                 {tag}
+                {i < stack.length - 1 ? (
+                  <span aria-hidden className="text-fg-2">·</span>
+                ) : null}
               </li>
             ))}
           </ul>
@@ -111,16 +97,15 @@ export function ProjectCard({
       ) : null}
 
       {primaryLink || secondaryLink ? (
-        <div className="mt-12 flex flex-wrap gap-3">
+        <div className="mt-12 flex flex-wrap justify-center gap-4">
           {primaryLink ? (
             <a
               href={primaryLink.href}
               target="_blank"
               rel="noreferrer noopener"
-              className="snap-hover inline-flex items-center gap-2 px-4 py-3 mono-label text-fg-0 hover:text-signal transition-none"
+              className="snap-hover inline-flex items-center gap-3 px-5 py-3 font-display italic text-base text-fg-0 hover:text-signal"
               style={{ background: "var(--color-bg-1)" }}
             >
-              <span aria-hidden>→</span>
               {primaryLink.label}
             </a>
           ) : null}
@@ -129,7 +114,7 @@ export function ProjectCard({
               href={secondaryLink.href}
               target="_blank"
               rel="noreferrer noopener"
-              className="snap-hover inline-flex items-center gap-2 px-4 py-3 mono-label text-fg-1 hover:text-signal transition-none"
+              className="snap-hover inline-flex items-center gap-3 px-5 py-3 font-display italic text-base text-fg-1 hover:text-signal"
             >
               {secondaryLink.label}
             </a>

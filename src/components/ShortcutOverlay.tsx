@@ -8,10 +8,10 @@ const TARGETS: Record<string, string> = {
 };
 
 const ROWS: Array<[string, string]> = [
-  ["?", "TOGGLE OVERLAY"],
-  ["G P", "JUMP · MANIFEST"],
-  ["G C", "JUMP · CHANNEL"],
-  ["ESC", "CLOSE"],
+  ["?", "toggle this card"],
+  ["G P", "go · works"],
+  ["G C", "go · letter"],
+  ["ESC", "close"],
 ];
 
 export function ShortcutOverlay() {
@@ -70,31 +70,34 @@ export function ShortcutOverlay() {
       aria-modal="true"
       aria-label="Keyboard shortcuts"
       className="fixed inset-0 z-50 flex items-center justify-center px-6"
-      style={{ background: "rgba(11, 12, 13, 0.85)" }}
+      style={{ background: "rgba(28, 23, 20, 0.45)" }}
       onClick={() => setOpen(false)}
     >
       <div
-        className="w-full max-w-md hairline-strong"
-        style={{ background: "var(--color-bg-2)", border: "1px solid var(--color-line-strong)" }}
+        className="w-full max-w-md hairline-strong text-center"
+        style={{ background: "var(--color-bg-1)", border: "1px solid var(--color-line-strong)" }}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="px-6 py-4 hairline hairline-b flex items-center justify-between">
-          <span className="mono-label text-fg-1">TELEMETRY · SHORTCUTS</span>
+          <span className="font-display italic text-fg-1 text-base">marginalia</span>
           <button
             className="mono-label-sm text-fg-2 hover:text-signal"
             onClick={() => setOpen(false)}
             aria-label="Close shortcuts"
           >
-            ESC
+            esc
           </button>
         </div>
-        <ul className="px-6 py-5 flex flex-col gap-3">
+        <ul className="px-6 py-6 flex flex-col gap-4">
           {ROWS.map(([k, label]) => (
             <li key={k} className="flex items-center justify-between">
-              <span className="font-mono text-fg-0 text-sm tracking-[0.04em] px-2 py-1 hairline" style={{ border: "1px solid var(--color-line)", background: "var(--color-bg-1)" }}>
+              <span
+                className="font-mono text-fg-0 text-sm tracking-[0.06em] px-2 py-1"
+                style={{ border: "1px solid var(--color-line)", background: "var(--color-bg-2)" }}
+              >
                 {k}
               </span>
-              <span className="mono-label text-fg-1">{label}</span>
+              <span className="font-display italic text-fg-1 text-base">{label}</span>
             </li>
           ))}
         </ul>

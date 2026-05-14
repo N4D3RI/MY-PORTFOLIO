@@ -3,22 +3,22 @@ import { Section } from "@/components/Section";
 import { ProjectCard } from "@/components/ProjectCard";
 
 const SKILL_GROUPS: Array<{ label: string; items: string[] }> = [
-  { label: "LANGUAGES", items: ["Python", "SQL"] },
+  { label: "Languages", items: ["Python", "SQL"] },
   {
-    label: "LIBRARIES",
+    label: "Libraries",
     items: ["pandas", "NumPy", "matplotlib", "seaborn", "SciPy"],
   },
   {
-    label: "CONCEPTS",
+    label: "Concepts",
     items: [
       "Probability",
       "Statistics",
-      "Hypothesis Testing",
-      "Data Visualization",
-      "Exploratory Data Analysis",
+      "Hypothesis testing",
+      "Data visualization",
+      "Exploratory analysis",
     ],
   },
-  { label: "TOOLS", items: ["Git", "GitHub", "Jupyter", "VS Code"] },
+  { label: "Instruments", items: ["Git", "GitHub", "Jupyter", "VS Code"] },
 ];
 
 export default function Home() {
@@ -26,69 +26,65 @@ export default function Home() {
     <>
       <Hero />
 
-      {/* About — minimal panel, no SEC.0N to keep it visually distinct from
-          the numbered manifest sections below. */}
+      {/* About — quiet preface */}
       <section
         id="about"
         className="relative scroll-mt-24 px-6 md:px-10 py-24 md:py-32 hairline hairline-t"
       >
-        <span
-          aria-hidden
-          className="absolute top-3 left-3 mono-label-sm text-fg-2"
-        >
-          +
-        </span>
-        <div className="mx-auto w-full max-w-6xl">
-          <h2 className="font-display font-semibold text-fg-0 text-[clamp(2rem,4vw,3.25rem)] leading-[0.95] tracking-[-0.02em] mb-10">
-            ABOUT
+        <div className="mx-auto w-full max-w-3xl text-center">
+          <p className="mono-label text-fg-2 mb-3">a brief preface</p>
+          <h2 className="font-display font-medium text-fg-0 text-[clamp(2.25rem,5vw,3.75rem)] leading-[1] tracking-[-0.01em]">
+            About
           </h2>
-          <p className="font-mono text-fg-0 text-sm md:text-base leading-[1.8] max-w-[65ch]">
-            I am Mo Naderi. I am 21, based in South Florida, and currently
-            studying machine learning at TripleTen. Outside of code I spend
-            time at Kennedy Space Center launches, training Muay Thai, and
-            driving my truck through the Everglades. Long term I am pointed
-            at aerospace.
+
+          <div className="my-12 flex items-center justify-center gap-3 text-fg-2">
+            <span className="block h-px w-16 bg-fg-2/35" />
+            <span aria-hidden className="font-display italic text-base">§</span>
+            <span className="block h-px w-16 bg-fg-2/35" />
+          </div>
+
+          <p className="text-fg-0 text-lg md:text-xl leading-[1.8] max-w-2xl mx-auto">
+            I am Mo Naderi. I am twenty-one, based in South Florida, and
+            currently studying machine learning at TripleTen. Outside of code I
+            keep watch at the Kennedy Space Center launches, train Muay Thai,
+            and drive my truck through the Everglades. Long term, I am
+            pointed at aerospace.
           </p>
         </div>
       </section>
 
-      {/* Skills — minimal panel matching About's frame, chip styling
-          mirrors the project stack tags. */}
+      {/* Skills — three columns of marginalia */}
       <section
         id="skills"
         className="relative scroll-mt-24 px-6 md:px-10 py-24 md:py-32 hairline hairline-t"
       >
-        <span
-          aria-hidden
-          className="absolute top-3 left-3 mono-label-sm text-fg-2"
-        >
-          +
-        </span>
-        <div className="mx-auto w-full max-w-6xl">
-          <h2 className="font-display font-semibold text-fg-0 text-[clamp(2rem,4vw,3.25rem)] leading-[0.95] tracking-[-0.02em] mb-10">
-            SKILLS
+        <div className="mx-auto w-full max-w-3xl text-center">
+          <p className="mono-label text-fg-2 mb-3">an index of the tools</p>
+          <h2 className="font-display font-medium text-fg-0 text-[clamp(2.25rem,5vw,3.75rem)] leading-[1] tracking-[-0.01em]">
+            Skills
           </h2>
-          <dl className="flex flex-col gap-8 md:gap-10">
+
+          <div className="my-12 flex items-center justify-center gap-3 text-fg-2">
+            <span className="block h-px w-16 bg-fg-2/35" />
+            <span aria-hidden className="font-display italic text-base">§</span>
+            <span className="block h-px w-16 bg-fg-2/35" />
+          </div>
+
+          <dl className="flex flex-col gap-10">
             {SKILL_GROUPS.map(({ label, items }) => (
-              <div
-                key={label}
-                className="grid grid-cols-12 gap-3 md:gap-6 items-start"
-              >
-                <dt className="col-span-12 md:col-span-3 mono-label text-fg-2 md:pt-2">
-                  {label}
-                </dt>
-                <dd className="col-span-12 md:col-span-9">
-                  <ul className="flex flex-wrap gap-2">
-                    {items.map((item) => (
+              <div key={label} className="text-center">
+                <dt className="mono-label text-fg-2 mb-3">{label}</dt>
+                <dd>
+                  <ul className="flex flex-wrap justify-center gap-x-3 gap-y-1 text-fg-0">
+                    {items.map((item, i) => (
                       <li
                         key={item}
-                        className="font-mono uppercase tracking-[0.08em] text-fg-1 text-xs px-2 py-1"
-                        style={{
-                          border: "1px solid var(--color-line-strong)",
-                          background: "var(--color-bg-1)",
-                        }}
+                        className="font-display italic text-lg md:text-xl inline-flex items-center gap-3"
                       >
                         {item}
+                        {i < items.length - 1 ? (
+                          <span aria-hidden className="text-fg-2 not-italic">·</span>
+                        ) : null}
                       </li>
                     ))}
                   </ul>
@@ -101,15 +97,15 @@ export default function Home() {
 
       <Section
         id="projects"
-        number="01"
-        label="PROJECTS"
-        sublabel="/ MANIFEST"
+        number="i."
+        label="Works"
+        sublabel="a small catalogue of recent things"
       >
         <ProjectCard
           lead
-          codename="LEXPY"
+          codename="Lexpy"
           status="DEPLOYED"
-          summary="Interactive Python glossary with 150 functions. Search any method, read what it does, see it used, run real Python in the browser via Pyodide."
+          summary="An interactive Python glossary of one hundred and fifty functions. Search any method, read what it does, see it used, run real Python in the browser through Pyodide."
           stack={[
             "React",
             "TypeScript",
@@ -120,11 +116,11 @@ export default function Home() {
           ]}
           primaryLink={{
             href: "https://n4d3ri.github.io/lexpy-dictionary/",
-            label: "VIEW TRANSMISSION",
+            label: "Open the volume",
           }}
           secondaryLink={{
             href: "https://github.com/N4D3RI/lexpy-dictionary",
-            label: "SOURCE",
+            label: "Read the source",
           }}
         />
       </Section>
